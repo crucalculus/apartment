@@ -12,6 +12,7 @@
 		A4A099061C05FC31006221E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4A099041C05FC31006221E6 /* Main.storyboard */; };
 		A4A099081C05FC31006221E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4A099071C05FC31006221E6 /* Assets.xcassets */; };
 		A4A0990B1C05FC31006221E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4A099091C05FC31006221E6 /* LaunchScreen.storyboard */; };
+		A4A099131C05FD17006221E6 /* EstimoteSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A099121C05FD17006221E6 /* EstimoteSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,8 @@
 		A4A099071C05FC31006221E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A4A0990A1C05FC31006221E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A4A0990C1C05FC31006221E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4A099121C05FD17006221E6 /* EstimoteSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EstimoteSDK.framework; sourceTree = "<group>"; };
+		A4A099141C05FD7D006221E6 /* ObjCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4A099131C05FD17006221E6 /* EstimoteSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +42,8 @@
 		A4A098F41C05FC31006221E6 = {
 			isa = PBXGroup;
 			children = (
+				A4A099141C05FD7D006221E6 /* ObjCBridge.h */,
+				A4A099121C05FD17006221E6 /* EstimoteSDK.framework */,
 				A4A098FF1C05FC31006221E6 /* Apartment */,
 				A4A098FE1C05FC31006221E6 /* Products */,
 			);
@@ -96,7 +102,7 @@
 				TargetAttributes = {
 					A4A098FC1C05FC31006221E6 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = 26HXGVALX4;
+						DevelopmentTeam = RQ36Q39487;
 					};
 				};
 			};
@@ -248,10 +254,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Apartment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.SASInnovationCenter.Apartment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = ObjCBridge.h;
 			};
 			name = Debug;
 		};
@@ -259,10 +273,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Apartment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.SASInnovationCenter.Apartment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = ObjCBridge.h;
 			};
 			name = Release;
 		};

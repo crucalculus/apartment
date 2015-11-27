@@ -9,14 +9,34 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate {
 
     var window: UIWindow?
-
-
+    var beaconManager = ESTBeaconManager()
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        // 3. Set the beacon manager's delegate
+        self.beaconManager.delegate = self;
+        
+        self.beaconManager.requestAlwaysAuthorization();
+        
+        UIApplication.sharedApplication().registerUserNotificationSettings(
+            UIUserNotificationSettings(forTypes: .Alert, categories: nil))
+        
+        self.beaconManager.startMonitoringForRegion(CLBeaconRegion(
+            proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!,
+            major: 65344 , minor: 50164 , identifier: "monitored region"));
+        
         return true
+    }
+    
+    func beaconManager(manager: AnyObject, didEnterRegion region: CLBeaconRegion) {
+        let notification = UILocalNotification()
+        notification.alertBody =
+            "Welcome Home Eric! " +
+            "It looks like you just walked into your " +
+            "apartment. "
+        UIApplication.sharedApplication().presentLocalNotificationNow(notification)
     }
 
     func applicationWillResignActive(application: UIApplication) {
