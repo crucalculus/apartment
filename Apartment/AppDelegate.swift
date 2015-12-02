@@ -15,19 +15,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
     var beaconManager = ESTBeaconManager()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // 3. Set the beacon manager's delegate
+        // Set the beacon manager's delegate
+        // Since AppDelegate inherits from ESTBeaconManagerDelagate,
+        // we can assign self to self.beaconManager.delegate
         self.beaconManager.delegate = self;
         
+        // Good to request authorization...
         self.beaconManager.requestAlwaysAuthorization();
         
         UIApplication.sharedApplication().registerUserNotificationSettings(
             UIUserNotificationSettings(forTypes: .Alert, categories: nil))
         
-        
         // I'm only specifying the UUID -- which I think means that all 4 beacons in
         // the apartment will serve as a *REGION* and I'm hoping this eliminates the
         // repeating "enter" messages I'm getting...
-        
         self.beaconManager.startMonitoringForRegion(CLBeaconRegion(
             proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!,
             /*major: 65344 , minor: 50164 ,*/ identifier: "apartment"
